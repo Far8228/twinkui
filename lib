@@ -228,11 +228,11 @@ function UILibrary.Load(GUITitle)
 	
 	Level += 1
 
-    CloseButton = Instance.new("TextButton")
+    local CloseButton = Instance.new("TextButton")
     CloseButton.Name = "Close"
     CloseButton.Text = "X"
     CloseButton.Size = UDim2.new(0,20,0,20)
-    CloseButton.Position = UDim2.new(0.99, -25, 0, 3)
+    CloseButton.Position = UDim2.new(0.96, -25, 0, 3)
     CloseButton.Parent = TitleBar
 
     -- Close Button Functionality
