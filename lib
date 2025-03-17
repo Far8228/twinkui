@@ -1,4 +1,4 @@
-print("6")
+print("613")
 local Player = game.Players.LocalPlayer
 local Mouse = Player:GetMouse()
 
@@ -228,7 +228,7 @@ function UILibrary.Load(GUITitle)
 	
 	Level += 1
 
-    local CloseButton = Instance.new("TextButton")
+    CloseButton = Instance.new("TextButton")
     CloseButton.Name = "Close"
     CloseButton.Text = "X"
     CloseButton.Size = UDim2.new(0,20,0,20)
