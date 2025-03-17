@@ -1,4 +1,4 @@
-print("4")
+print("5")
 local Player = game.Players.LocalPlayer
 local Mouse = Player:GetMouse()
 
@@ -166,86 +166,92 @@ end
 local UILibrary = {}
 
 function UILibrary.Load(GUITitle)
-	local TargetedParent = RunService:IsStudio() and Player:WaitForChild("PlayerGui") or CoreGuiService
-	
-	local FindOldInstance = TargetedParent:FindFirstChild(GUITitle)
-	
-	if FindOldInstance then
-		FindOldInstance:Destroy()
-	end
-	
-	local NewInstance, ContainerFrame, ContainerShadow, MainFrame
-	
-	NewInstance = Instance.new("ScreenGui")
-	NewInstance.Name = GUITitle
-	NewInstance.Parent = TargetedParent
-	
-	ContainerFrame = Frame()
-	ContainerFrame.Name = "ContainerFrame"
-	ContainerFrame.Size = UDim2.new(0,500,0,300)
-	ContainerFrame.Position = UDim2.new(0.5,-250,0.5,-150)
-	ContainerFrame.BackgroundTransparency = 1
-	ContainerFrame.Parent = NewInstance
-	
-	ContainerShadow = DropShadow()
-	ContainerShadow.Name = "Shadow"
-	ContainerShadow.Parent = ContainerFrame
-	
-	Level += 1
-	
-	MainFrame = RoundBox(5)
-	MainFrame.ClipsDescendants = true
-	MainFrame.Name = "MainFrame"
-	MainFrame.Size = UDim2.new(1,-50,1,-30)
-	MainFrame.Position = UDim2.new(0,25,0,15)
-	MainFrame.ImageColor3 = Color3.fromRGB(30,30,30)
-	MainFrame.Parent = ContainerFrame
-	
-	local MenuBar, DisplayFrame, TitleBar
-	
-	MenuBar = ScrollingFrame()
-	MenuBar.Name = "MenuBar"
-	MenuBar.BackgroundTransparency = 0.7
-	MenuBar.BackgroundColor3 = Color3.fromRGB(20,20,20)
-	MenuBar.Size = UDim2.new(0,100,0,235)
-	MenuBar.Position = UDim2.new(0,5,0,30)
-	MenuBar.CanvasSize = UDim2.new(0,0,0,0)
-	MenuBar.Parent = MainFrame
-	
-	DisplayFrame = RoundBox(5)
-	DisplayFrame.Name = "Display"
-	DisplayFrame.ImageColor3 = Color3.fromRGB(20,20,20)
-	DisplayFrame.Size = UDim2.new(1,-115,0,235)
-	DisplayFrame.Position = UDim2.new(0,110,0,30)
-	DisplayFrame.Parent = MainFrame
-	
-	TitleBar = RoundBox(5)
-	TitleBar.Name = "TitleBar"
-	TitleBar.ImageColor3 = Color3.fromRGB(40,40,40)
-	TitleBar.Size = UDim2.new(1,-10,0,20)
-	TitleBar.Position = UDim2.new(0,5,0,5)
-	TitleBar.Parent = MainFrame
-	
-	Level += 1
-
--- Create Close Button
-local CloseButton = TitleIcon(true) -- Make it a button
-CloseButton.Name = "Close"
-CloseButton.Parent = TitleBar
-CloseButton.Position = UDim2.new(0.99, -25, 0, 3)
-
--- Close Button Functionality
-CloseButton.MouseButton1Click:Connect(function()
     local TargetedParent = RunService:IsStudio() and Player:WaitForChild("PlayerGui") or CoreGuiService
-    local GUITitle = NewInstance.Name -- Get GUI Name
-    local GUI = TargetedParent:FindFirstChild(GUITitle)
-    
-    if GUI then
-        GUI:Destroy() -- Destroy the entire GUI
-else
-print("didn't found")
+
+    local FindOldInstance = TargetedParent:FindFirstChild(GUITitle)
+
+    if FindOldInstance then
+        FindOldInstance:Destroy()
     end
-end)
+
+    local NewInstance, ContainerFrame, ContainerShadow, MainFrame
+
+    -- Create the new GUI instance
+    NewInstance = Instance.new("ScreenGui")
+    NewInstance.Name = GUITitle
+    NewInstance.Parent = TargetedParent
+
+    -- Create the Container Frame
+    ContainerFrame = Instance.new("Frame")
+    ContainerFrame.Name = "ContainerFrame"
+    ContainerFrame.Size = UDim2.new(0,500,0,300)
+    ContainerFrame.Position = UDim2.new(0.5,-250,0.5,-150)
+    ContainerFrame.BackgroundTransparency = 1
+    ContainerFrame.Parent = NewInstance
+
+    -- Create the shadow effect
+    ContainerShadow = Instance.new("Frame")
+    ContainerShadow.Name = "Shadow"
+    ContainerShadow.Parent = ContainerFrame
+
+    -- Main Frame
+    MainFrame = Instance.new("ImageLabel")
+    MainFrame.ClipsDescendants = true
+    MainFrame.Name = "MainFrame"
+    MainFrame.Size = UDim2.new(1,-50,1,-30)
+    MainFrame.Position = UDim2.new(0,25,0,15)
+    MainFrame.ImageColor3 = Color3.fromRGB(30,30,30)
+    MainFrame.Parent = ContainerFrame
+
+    -- Menu Bar
+    local MenuBar = Instance.new("ScrollingFrame")
+    MenuBar.Name = "MenuBar"
+    MenuBar.BackgroundTransparency = 0.7
+    MenuBar.BackgroundColor3 = Color3.fromRGB(20,20,20)
+    MenuBar.Size = UDim2.new(0,100,0,235)
+    MenuBar.Position = UDim2.new(0,5,0,30)
+    MenuBar.CanvasSize = UDim2.new(0,0,0,0)
+    MenuBar.Parent = MainFrame
+
+    -- Display Frame
+    local DisplayFrame = Instance.new("ImageLabel")
+    DisplayFrame.Name = "Display"
+    DisplayFrame.ImageColor3 = Color3.fromRGB(20,20,20)
+    DisplayFrame.Size = UDim2.new(1,-115,0,235)
+    DisplayFrame.Position = UDim2.new(0,110,0,30)
+    DisplayFrame.Parent = MainFrame
+
+    -- Title Bar
+    local TitleBar = Instance.new("ImageLabel")
+    TitleBar.Name = "TitleBar"
+    TitleBar.ImageColor3 = Color3.fromRGB(40,40,40)
+    TitleBar.Size = UDim2.new(1,-10,0,20)
+    TitleBar.Position = UDim2.new(0,5,0,5)
+    TitleBar.Parent = MainFrame
+
+    -- Close Button
+    local CloseButton = Instance.new("TextButton")
+    CloseButton.Name = "Close"
+    CloseButton.Text = "X"
+    CloseButton.Size = UDim2.new(0,20,0,20)
+    CloseButton.Position = UDim2.new(0.99, -25, 0, 3)
+    CloseButton.Parent = TitleBar
+
+    -- Close Button Functionality
+    CloseButton.MouseButton1Click:Connect(function()
+        local TargetedParent = RunService:IsStudio() and Player:WaitForChild("PlayerGui") or CoreGuiService
+        local GUITitle = NewInstance.Name  -- Get GUI Name
+        print("Looking for GUI:", GUITitle)  -- Debug print
+
+        local GUI = TargetedParent:FindFirstChild(GUITitle)
+
+        if GUI then
+            print("GUI found, destroying...")
+            GUI:Destroy()  -- Destroy the entire GUI
+        else
+            print("GUI not found")
+        end
+    end)
 
 	local MinimiseButton, TitleButton
 	local MinimiseToggle = true
