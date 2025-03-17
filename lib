@@ -231,7 +231,7 @@ function UILibrary.Load(GUITitle)
 local CloseButton = TitleIcon(true) -- Make it a button
 CloseButton.Name = "Close"
 CloseButton.Parent = TitleBar
-CloseButton.Position = UDim2.new(0.8, -25, 0, 3)
+CloseButton.Position = UDim2.new(0.4, -25, 0, 3)
 
 -- Close Button Functionality
 CloseButton.MouseButton1Click:Connect(function()
