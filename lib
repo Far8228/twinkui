@@ -226,6 +226,24 @@ function UILibrary.Load(GUITitle)
 	TitleBar.Parent = MainFrame
 	
 	Level += 1
+
+-- Create Close Button
+local CloseButton = TitleIcon(true) -- Make it a button
+CloseButton.Name = "Close"
+CloseButton.Parent = TitleBar
+CloseButton.Position = UDim2.new(1, -25, 0, 3) -- Position it properly
+
+-- Close Button Functionality
+CloseButton.MouseButton1Click:Connect(function()
+    local TargetedParent = RunService:IsStudio() and Player:WaitForChild("PlayerGui") or CoreGuiService
+    local GUITitle = NewInstance.Name -- Get GUI Name
+    local GUI = TargetedParent:FindFirstChild(GUITitle)
+    
+    if GUI then
+        GUI:Destroy() -- Destroy the entire GUI
+    end
+end)
+
 	
 local MinimiseButton, CloseButton, TitleButton
 local MinimiseToggle = true
