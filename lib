@@ -1,4 +1,4 @@
-print("2")
+print("3")
 local Player = game.Players.LocalPlayer
 local Mouse = Player:GetMouse()
 
@@ -232,7 +232,7 @@ function UILibrary.Load(GUITitle)
 local CloseButton = TitleIcon(true) -- Make it a button
 CloseButton.Name = "Close"
 CloseButton.Parent = TitleBar
-CloseButton.Position = UDim2.new(0.94, -25, 0, 3)
+CloseButton.Position = UDim2.new(0.98, -25, 0, 3)
 
 -- Close Button Functionality
 CloseButton.MouseButton1Click:Connect(function()
@@ -242,6 +242,8 @@ CloseButton.MouseButton1Click:Connect(function()
     
     if GUI then
         GUI:Destroy() -- Destroy the entire GUI
+else
+print("didn't found")
     end
 end)
 
